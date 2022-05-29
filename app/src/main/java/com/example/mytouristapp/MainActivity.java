@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean updateOn = false;  //variable to remember if we are tracking location or not
     TextView tv_lat, tv_lon, tv_altitude, tv_accuracy, tv_speed, tv_sensor, tv_updates, tv_address, tv_wayPointCounts;
-    Button btn_newWaypoint, btn_showWaypointList;
+    Button btn_newWaypoint, btn_showWaypointList, btn_showMap;
     Switch sw_locationupdates, sw_gps;
 
     Location currentLocation;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         tv_wayPointCounts = findViewById(R.id.tv_countOfCrumbs);
         btn_newWaypoint = findViewById(R.id.btn_newWayPoint);
         btn_showWaypointList = findViewById(R.id.btn_showWayPointsList);
+        btn_showMap = findViewById(R.id.btn_showMap);
 
         sw_gps = findViewById(R.id.sw_gps);
 
@@ -98,11 +100,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //get the gps location
-
                 //add the new location to the list
                 MyApplication myApplication = (MyApplication)getApplicationContext();
                 savedLocations = myApplication.getMyLocations();
                 savedLocations.add(currentLocation);
+            }
+        });
+
+
+
+        btn_showWaypointList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ShowSavedLocationsList.class);
+                startActivity(i);
+            }
+        });
+
+        btn_showMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                startActivity(i);
             }
         });
 
@@ -227,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
         tv_accuracy.setText("No está siendo rastreado");
         tv_speed.setText("No está siendo rastreado");
         tv_altitude.setText("No está siendo rastreado");
-        tv_sensor.setText("No está siendo rastreado");
+        tv_sensor.setText("Usando GPS");
         tv_address.setText("No está siendo rastreado");
 
         fusedLocationProviderClient.removeLocationUpdates(locationCallBack);

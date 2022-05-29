@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/afreiberger/AndroidStudioProjects/MyTouristApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/afreiberger/AndroidStudioProjects/MyTouristApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/agusl/source/MyTouristApp/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/agusl/source/MyTouristApp/app/src/main/res/layout/activity_maps.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/agusl/source/MyTouristApp/app/src/main/res/layout/activity_show_saved_locations_list.xml" value="0.264" />
       </map>
     </option>
   </component>
